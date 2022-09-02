@@ -1,10 +1,10 @@
 ---
-title: 'How much should we trust differences-in-differences estimates?'
+title: 'Credit and investment distortions: Evidence from Mexican manufacturing'
 author: |
-  | Carlos Lezama
-  | Advanced Microeconometrics
+  | Carlos Lezama, Jesus Lopez
+  | Dynamic Macroeconomics II
   | ITAM
-date: 'Spring 2022'
+date: 'Fall 2022'
 output:
   beamer_presentation:
     colortheme: 'seagull'
@@ -18,66 +18,30 @@ output:
 
 # Introduction
 
-Differences-in-Differences (DD) estimation consists of identifying a specific intervention or treatment. One then compares the difference in outcomes after and before the intervention for groups affected by the intervention to the same difference for unaffected groups.
+The paper analyzes the influence of financial factors on firms’ investment decisions and aggregate capital accumulation via their effect on dynamic capital distortions.
 
-The great appeal of DD estimation comes from its simplicity as well as its potential to circumvent many of the endogeneity problems that typically arise when making comparisons between heterogeneous individuals.
+The authors build a multi-industry model to measure labor and investment wedges using data for the Mexican manufacturing sector (for 2003–2012) and assess their importance in accounting for aggregate capital and TFP over time.
 
-Obviously, DD estimation also has its limitations. It is appropriate when the interventions are as good as random, conditional on time and group fixed effects. Therefore, much of the debate around the validity of a DD estimate typically revolves around the possible endogeneity of the interventions themselves.
-
-## Introduction
-
-Focus on issues relating to the *standard error* of the estimate.
-
-DD estimates and their standard errors most often derive from using Ordinary Least Squares (OLS) in repeated cross sections (or a panel) of data on individuals in treatment and control groups for several years before and after a specific intervention.
-
-One then typically estimates the following regression using OLS:
-
-\begin{equation}
-Y_{ist} = A_s + B_t + cX_{ist} + \beta I_{st} + \varepsilon_{ist},
-\end{equation}
-
-where the subscripts $i$, $s$, and $t$ stand for the individual, group (such as a state), and time (such as a year), respectively. Furthermore, let $Y$ be our outcome of interest, $I$ be a dummy, $A$ and $B$ be fixed effects, $X$ be relevant individual controls, and $\varepsilon$ be an error term.
 
 ## Introduction
 
-The estimated impact of the intervention is then the OLS estimate $\hat{\beta}$. Standard errors used to form confidence interval for $\hat{\beta}$ are usually OLS standard errors.
+The research is based on the merged dataset in Meza et al. (2019), linking output, employment and investment with credit flows and interest rates at the 4-digit industry level.
 
-\begin{remark}
-Note that this is valid only under the very restrictive assumption that changes in the outcome variable over time would have been exactly the same in both treatment and control groups in the absence of the intervention.
-\end{remark}
+The two main results arise:
+\begin{itemize}
+\item Changes in dynamic capital distortions are important in accounting for the path of capital over time.
+\item Industry specific investment wedges and credit conditions are correlated. Industries where the availability of credit falls and/or real interest rates increase experience an increase in their capital distortions.
+\end{itemize}
 
-## Introduction
+# The environment
 
-Three factors make serial correlation an especially important issue in the DD context:
+\begin{itemize}
+\item $n$ industries, each one a representative firm, facing two distortions: static labor wedge and dynamic investment wedge.
+\item Technology: $Y^i_t = A^i_t(K^i_t)^{\alpha^i}(L^i_t)^{1-\alpha^i} $, where $A^i$ is an industry specific shock.
+\item Firms own $K$ and maximize profits net of expenditures $\Pi$. 
+\item The output of all industries is combined $Y_t = \Pi^n_{i = 1} (Y^i_t)^{\omega^i}$, with $\omega^i$ constant expenditure share in each industry.
+\end{itemize}
 
-1. DD estimation usually relies on fairly long time series.
-2. The most commonly used dependent variables in DD estimation are typically highly positively serially correlated.
-3. The treatment variable $I_{st}$ changes itself very little within a state over time.
-
-These three factors reinforce each other so that the standard error for $\hat{\beta}$ could severely understate the standard deviation of $\hat{\beta}$.
-
-## Introduction
-
-To assess the extent of this problem, they examine how DD performs on placebo laws, where treated states and year of passage are chosen at random.
-
-Placebo tests diagnose problems with research designs in observational studies. When a researcher estimates a treatment effect based on observational data, the estimator may be biased by confounders, model misspecification, differential measurement error, or other flaws; the researcher may also have constructed confidence intervals incorrectly, such that we would reject the null hypothesis too frequently (or infrequently) under the null. A placebo test checks for an association that should be absent if the research design is sound but not otherwise. Placebo tests can thus be seen as a strategy for checking the soundness of a research finding and, more broadly, improving causal inference.
-
-# A Survey of DD Papers
-
-Papers were classified as "DD" if they focus on specific interventions and use units unaffected by the law as a control group.
-
-|  |  |
-| :--- | :---: |
-| Number of DD papers | 92 |
-| Number with more than 2 periods of data | 69 |
-| Number which collapse data into before-after | 4 |
-| Number with potential serial correlation problem | 65 |
-| Number with some serial correlation correction | 5 |
-| GLS | 4 |
-| Arbitrary variance-covariance matrix | 1 |
-| Number with potential clustering problem | 80 |
-| Number which deal with it | 36 |
-: Survey of DD papers
 
 ## A Survey of DD Papers
 
