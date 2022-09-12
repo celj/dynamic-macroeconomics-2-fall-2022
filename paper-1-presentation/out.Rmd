@@ -1,5 +1,5 @@
 ---
-title: 'Credit and investment distortions: Evidence from Mexican manufacturing'
+title: 'Felipe Meza, Sangeeta Pratap, Carlos Urrutia (2020).  Credit and investment distortions: Evidence from Mexican manufacturing, EL 197, 109610'
 author: |
   | Carlos Lezama, Jesus Lopez
   | Dynamic Macroeconomics II
@@ -18,19 +18,20 @@ output:
 
 # Introduction
 
-The paper analyzes the influence of financial factors on firms’ investment decisions and aggregate capital accumulation via their effect on dynamic capital distortions.
+The paper analyzes the influence of financial factors (credit flows and interest rates) on firms’ investment decisions and capital accumulation through their effect on dynamic capital distortions (i.e., deviations
+from the optimal allocation of resources across sectors and over time).
 
 The authors build a multi-industry model to measure labor and investment wedges using data for the Mexican manufacturing sector (for 2003–2012) and assess their importance in accounting for aggregate capital and TFP over time.
 
 
 ## Introduction
 
-The research is based on the merged dataset in Meza et al. (2019), linking output, employment and investment with credit flows and interest rates at the 4-digit industry level.
+The research is based on the merged dataset in Meza et al. (2019), linking output, employment and investment with credit flows and interest rates for Mexican industries between 2003 - 2013.
 
 The two main results arise:
 \begin{itemize}
 \item Changes in dynamic capital distortions are important in accounting for the path of capital over time.
-\item Industry specific investment wedges and credit conditions are correlated. Industries where the availability of credit falls and/or real interest rates increase experience an increase in their capital distortions.
+\item Industry specific investment wedges (a wedge appears whenever firms deviate from the optimal choice) and credit conditions are correlated. Industries where the availability of credit falls and/or real interest rates increase experience an increase in their capital distortions.
 \end{itemize}
 
 # The environment
@@ -38,196 +39,71 @@ The two main results arise:
 \begin{itemize}
 \item $n$ industries, each one a representative firm, facing two distortions: static labor wedge and dynamic investment wedge.
 \item Technology: $Y^i_t = A^i_t(K^i_t)^{\alpha^i}(L^i_t)^{1-\alpha^i} $, where $A^i$ is an industry specific shock.
-\item Firms own $K$ and maximize profits net of expenditures $\Pi$. 
-\item The output of all industries is combined $Y_t = \Pi^n_{i = 1} (Y^i_t)^{\omega^i}$, with $\omega^i$ constant expenditure share in each industry.
+\item Firms own $K$ and maximize expected PV of profits net of expenditures 
+
+$\Pi^i = E_0 \sum_{t = 0}^{\infty} (\frac{1}{1+\iota})^t \left\lbrace p_{t}^{i} Y_t^i - \theta_t^{L,i} w_t L_t^i - \theta_t^{K,i} \times [K_{t+1}^i - (1-\delta) K_t^i]  \right\rbrace $. 
+
+where $\theta_t^{L,i} and \theta_t^{K,i}$ are stochastic industry-specific distortions that affect labor and investment, respectively. Total output is combined $Y_t = \Pi^n_{i = 1} (Y^i_t)^{\omega^i}$, with $\omega^i$ constant expenditure share in each industry.
+
+\end{itemize}
+
+## Model 
+\begin{itemize}
+\item Static labor allocation
+ $L_t^i$ (3) \label{Eq3}
+\item Dynamic Euler equation
+$\Psi^i$ \label{Eq4}
+\item Aggregation
+
 \end{itemize}
 
 
-## A Survey of DD Papers
 
-| Percentile | Value |
-| :---: | :---: |
-| 1% | 3 |
-| 5% | 3 |
-| 10% | 4 |
-| 25% | 5.75 |
-| 50% | 11 |
-| 75% | 21.5 |
-| 90% | 36 |
-| 95% | 51 |
-| 99% | 83 |
-| Average | 16.5 |
-: Distribution of time span for papers with more than 2 periods
+## The Meza \textit{et al.} (2019) data set
 
-## A Survey of DD Papers
+Two sources:
+\begin{itemize}
+\item Survey: Encuesta Industrial Anual (EIA), INEGI. ~ 7,000 manufacturing establishments with information on all 86 4-digit NAICS 2007 (rama) industries. (82 when excluding Oil and missings)
+\item Administrative data: Universe of commercial credit loans by banks reports  (R04C), CNBV, aggregated annually to 4-digit NAICS 2007 (using  a (probabilistic) crosswalk to match CNBV-NAICS classification).
+\end{itemize}
 
-|  |  |
-| :--- | :---: |
-| Employment | 18 |
-| Wages | 13 |
-| Health/medical expenditure | 8 |
-| Unemployment | 6 |
-| Fertility/teen motherhood | 4 |
-| Insurance | 4 |
-| Poverty | 3 |
-| Consumption/savings | 3 |
-: Most commonly used dependent variables
 
-## A Survey of DD Papers
 
-|  |  |
-| :--- | :---: |
-| Graph dynamics of effect | 15 |
-| See if effect is persistent | 2 |
-| Attempt to do triple-differences (DDD) | 11 |
-| Include time trend specific to treated states | 7 |
-| Look for effect prior to intervention | 3 |
-| Include lagged dependent variable | 3 |
-: Informal techniques used to assess endogeneity
+## Measuring labor  wedges ($\theta_t^{L,i}$)
 
-# Overrejection in DD Estimation
 
-## Data
+\begin{itemize}
+\item Use US data for $\alpha^i$ (Hsieh and Klenow, 2009)
+\item Compute revenue productivity: $p_t^iA_t^i =  \frac{p_t^iY_t^i}{(K^i_t)^{\alpha^i}(L^i_t)^{1-\alpha^i}}$
+\item Estimate persistence parameter, $\rho_A^i$, for each 2-digit industry (sector) using Arellano-Bond estimator (for linear dynamic panel), recover Fixed Effect for each 4-digit industy (rama) to estimate steady-state (SS) values.
+\item The labor wedge is computed from \ref{Eq3}.
+\item The persistence parameter $\rho_L^i$ and its SS, are estimated analogously. 
+\item Value added shres, $\omega^i$ are computed directly from the EIA
+\end{itemize}
 
-The survey above suggests that most DD papers may report standard errors that understate the standard deviation of the DD estimator. To illustrate the magnitude of the problem they turn to a sample of women's wages from the Current Population Survey (CPS).
 
-More specifically, data on:
 
-* Women in their fourth interview month in the Merged Outgoing Rotation Group of the CPS.
-* Years: 1979 -- 1999.
-* Age: 25 -- 50 y/o.
-* Information on weekly earnings, employment status, education, age, and state of residence.
 
-## Data
+## Measuring investment wedges ($\theta_t^{K,i}$)
 
-### Summary
+Iterative procedure
+1. Given $\rho_A^i$ and $\rho_L^i$, set initial guess for $\rho_K^i$ and the initial SS values $\bar{\theta^{K,i}}$ and $\bar{K^i}$, and compute the investment wedge with \ref{Eq4}
 
-The sample contains:
 
-* Nearly 900,000 observations.
-* Approximately 540,000 women report strictly positive weekly earnings.
-* $\text{wage} = \log(\text{weekly earnings})$.
 
-This generates ($50 \times 21 = 1050$) state-year cells, with each cell containing on average a little more than 500 women with strictly positive earnings.
+# Results
 
-## Methodology
+## Estimated Capital and Labor distortions
+\centering
+![](fig/TableA1.jpg){width=80%}
 
-The correlogram of the wage residuals was informative enough to estimate first, second, and third autocorrelation coefficients for the mean state-year residuals from a regression of wages on state and year dummies such that they equal 0.51, 0.44, and 0.31, respectively (obtained by a simple OLS regression of the residuals on the corresponding lagged residuals) --- which are high and statistically significant.
 
-## Methodology
+Notes: The labor wedge is constructed to be unit mean. 
 
-Subsequently, in the DD context:
-
-1. Randomly, draw a $\text{year} \sim \mathcal{U}(1985, 1995)$.
-2. Select exactly half states (25) at random and designate them as "affected" by the law such that
-
-$$
-I_{st} =
-\begin{cases}
-1 & \text{for all women that live in an affected state} \\
-  & \text{after the intervention date,} \\
-0 & \text{otherwise}.
-\end{cases}
-$$
-
-3. Estimate equation (1) using OLS on these placebo laws.
-
-# "If hundreds of researchers analyzed the effects of various laws in the CPS, what fraction would find a significant effect even when the laws have no effect?"
-
-## Methodology
-
-If OLS were to provide consistent standard errors, we would expect to reject the null hypothesis of no effect ($\beta = 0$) roughly 5 percent of the time when using a threshold of 1.96 for the absolute $t$-statistic.
-
-## Methodology
-
-![](fig/A.png)
-
-## Methodology
-
-![](fig/B.png)
-
-## Methodology
-
-These results demonstrate that, in the presence of positive serial correlation, conventional DD estimation leads to gross overestimation of $t$-statistics and significance levels.
-
-# Solutions
-
-![](fig/varying.png)
-
-## Parametric Methods
-
-A first possible solution to the serial correlation problem would be to specify an autocorrelation structure for the error term, estimate its parameters, and use these parameters to compute standard errors.
-
-## Parametric Methods
-
-![](fig/param.png)
-
-## Block Bootstrap
-
-This variant of bootstrap maintains the autocorrelation structure by keeping all the observations that belong to the same group (e.g., state) together. In practice, we bootstrap the $t$-statistic as follows. For each placebo intervention we compute the absolute $t$-statistic $t = \lvert \hat{\beta} / \text{SE} (\hat{\beta}) \rvert$, using the OLS estimate of $\beta$ and its standard error. We then construct a bootstrap sample by drawing with replacement 50 matrices $(\bar{Y}_s, V_s)$, where $\bar{Y}_s$ is the entire time series of observations for state $s$, and $V_s$ is the matrix of state dummies, time dummies, and treatment dummy for state $s$.
-
-## Block Bootstrap
-
-We then run OLS on this sample. obtain an estimate $\hat{\beta}_r$ and construct the absolute $t$-statistic $t_r = \lvert (\hat{\beta}_r - \hat{\beta}) / \text{SE} (\hat{\beta}_r) \rvert$.
-
-\begin{remark}
-The difference between the distribution of $t_r$ and the sampling distribution of $t$ becomes small as $N$ goes to infinity, even in presence of arbitrary autocorrelation within states and heteroskedasticity.
-\end{remark}
-
-## Block Bootstrap
-
-![](fig/bootstrap.png)
-
-## Ignoring Time Series Information
-
-### Simple Aggregation
-
-One could simply average the data before and after the law and run equation (1) on this averaged outcome variable in a panel of length 2 --- this solution will work only for laws that are passed at the same time for all the treated states.
-
-### Residual Aggregation
-
-First, one can regress $Y_{st}$ on state fixed effects, year dummies, and any relevant covariates. One can then divide the residuals of the treatment states only into two groups: residuals from years before the laws, and residuals from years after the laws. The estimate of the laws’ effect and its standard error can then be obtained from an OLS regression in this two-period panel. It also does well when the laws are staggered over time.
-
-## Ignoring Time Series Information
-
-![](fig/ignore.png)
-
-## Empirical Variance-Covariance Matrix
-
-Suppose that the autocorrelation process is the same across all states and that there is **no** cross-section **heteroskedasticity**. In this case, if the data are sorted by states, and years, the variance-covariance matrix of the error term is block diagonal. Each of these blocks is symmetric, and the element $(i, i + j)$ is the correlation between $\varepsilon_i$ and $\varepsilon_{i - j}$. We can therefore use the variation across the 50 states to estimate each element of this matrix, and use this estimated matrix to compute standard errors.
-
-\begin{remark}
-Under our initial assumption, this method will produce consistent estimates of the standard error as $N \longrightarrow \infty$.
-\end{remark}
-
-## Empirical Variance-Covariance Matrix
-
-![](fig/empirical.png)
-
-## Arbitrary Variance-Covariance Matrix
-
-Since the assumption in the previous method is likely to be violated in practice, this method can be generalized to an estimator of the variance-covariance matrix which is consistent in the presence of any correlation pattern within states over time.
-
-## Arbitrary Variance-Covariance Matrix
-
-This estimator for the variance-covariance matrix is given by
-
-$$
-W = (V'V)^{-1} \left( \sum_{j = 1}^N u_j' u_j \right) (V'V)^{-1},
-$$
-
-where $V$ is matrix of independent variables (year dummies, state dummies and treatment dummy). Furthermore, $u_j$ is defined as follows
-
-$$
-u_j = \sum_{t = 1}^T e_{jt}v_{jt},
-$$
-
-where $e_{jt}$ is the estimated residual for state $i$ at time $t$, and $v_{jt}$ is the row vector of dependent variables.
-
-## Arbitrary Variance-Covariance Matrix
-
-![](fig/arbitrary.png)
+## Aggregate capital, TFP and average investment wedges.
+\centering
+![](fig/Fig2.jpg){width=80%}
 
 # Conclusion
 
-This study suggests that, because of serial correlation, conventional DD standard errors may grossly understate the standard deviation of the estimated treatment effects, leading to serious overestimation of $t$-statistics and significance levels. In other words, it is possible that too many false rejections of the null hypothesis of no effect have taken place.
+This study suggests that, 
