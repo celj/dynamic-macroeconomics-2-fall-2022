@@ -125,6 +125,7 @@ We use these to update the estimates of $\rho_K^i$ and $\bar{\theta^{K,i}}$ usin
 
 ## Aggregate capital, TFP and average investment wedges
 
+\centering
 ![](fig/3.png){width=70%}
 
 ## Investment wedges and credit conditions
