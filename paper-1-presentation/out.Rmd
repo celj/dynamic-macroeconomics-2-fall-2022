@@ -18,20 +18,28 @@ output:
 
 # Introduction
 
+## Motivation
+
 The paper analyzes the influence of financial factors (credit flows and interest rates) on firms’ investment decisions and capital accumulation through their effect on dynamic capital distortions (i.e., deviations
 from the optimal allocation of resources across sectors and over time).
 
 The authors build a multi-industry model to measure labor and investment wedges using data for the Mexican manufacturing sector (for 2003–2012) and assess their importance in accounting for aggregate capital and TFP over time.
 
 
-## Introduction
+## Main takeaways
 
-The research is based on the merged dataset in Meza et al. (2019), linking output, employment and investment with credit flows and interest rates for Mexican industries between 2003 - 2013.
-
-The two main results arise:
+The two results arise:
 \begin{itemize}
 \item Changes in dynamic capital distortions are important in accounting for the path of capital over time.
 \item Industry specific investment wedges (a wedge appears whenever firms deviate from the optimal choice) and credit conditions are correlated. Industries where the availability of credit falls and/or real interest rates increase experience an increase in their capital distortions.
+\end{itemize}
+
+## Main contributions
+
+\begin{itemize}
+\item Contribute to the strand of literature on the positive effects of the finance sector to the real economy.
+\item Setup a production and investment model to measure the wedges for the Mexican manufacturing sector.
+\item Build upon  the merged dataset of Meza \textit{et al.} (2019), linking output, employment and investment with credit flows and interest rates for Mexican industries between 2003 - 2013.
 \end{itemize}
 
 # The environment
