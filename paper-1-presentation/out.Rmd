@@ -30,14 +30,14 @@ The authors build a multi-industry model to measure labor and investment wedges 
 
 The two results arise:
 
-- Changes in dynamic capital distortions are important in accounting for the path of capital over time.
-- Industry specific investment wedges (a wedge appears whenever firms deviate from the optimal choice) and credit conditions are correlated. Industries where the availability of credit falls and/or real interest rates increase experience an increase in their capital distortions.
+- Changes in dynamic capital distortions are important in accounting for the path of capital over time
+- Industry specific investment wedges and credit conditions are correlated. Industries where the availability of credit falls and/or real interest rates increase experience an increase in their capital distortions
 
 ## Main contributions
 
-- Contribute to the strand of literature on the positive effects of the finance sector to the real economy.
-- Setup a production and investment model to measure the wedges for the Mexican manufacturing sector.
-- Build upon  the merged dataset of Meza _et al._ (2019), linking output, employment and investment with credit flows and interest rates for Mexican industries between 2003 - 2013.
+- Contribute to the strand of literature on the positive effects of the finance sector to the real economy
+- Setup a production and investment model to measure the wedges for the Mexican manufacturing sector
+- Build upon  the merged dataset of Meza _et al._ (2019), linking output, employment and investment with credit flows and interest rates for Mexican industries between 2003 - 2013
 
 # The environment
 
@@ -65,21 +65,21 @@ Total output is combined $\displaystyle Y_t = \prod^n_{i = 1} \left(Y^i_t\right)
 
 ## Model
 
-- Static labor allocation
+- **Static labor allocation**
 
 \begin{equation}
 L_t^i = \left( \frac{\omega^i(1-\alpha^i)}{\Phi_t \theta_t^{L,i}} \right) L_t 
 \label{SLA}
 \end{equation}
 
-- Dynamic Euler equation
+- **Dynamic Euler equation**
 
 \begin{equation}
 \Psi^i \overline{ \theta_t^{K,i}} = \rho_A^i \overline{p_t^i A_t^i } - E_t (1-\alpha^i) \overline{K_{t+1}^i} - (1-\alpha^i)\rho_L^i \overline{\theta_t^{L,i}}
 \label{DEE}
 \end{equation}
 
-- Aggregation
+- **Aggregation**
 
 \begin{equation}
 Y_t = \sum p_t^i A_t^i (K_t^i)^{\alpha^i} \left( \frac{\omega^i (1-\alpha^i)}{\Phi \theta_t^{L,i}} \right)^{1-\alpha^i}
@@ -90,8 +90,8 @@ Y_t = \sum p_t^i A_t^i (K_t^i)^{\alpha^i} \left( \frac{\omega^i (1-\alpha^i)}{\P
 
 Two sources:
 
-- Survey: Encuesta Industrial Anual (EIA), INEGI. ~ 7,000 manufacturing establishments with information on all 86 4-digit NAICS 2007 (rama) industries. (82 when excluding Oil and missings)
-- Administrative data: Universe of commercial credit loans by banks reports  (R04C), CNBV, aggregated annually to 4-digit NAICS 2007 (using  a (probabilistic) crosswalk to match CNBV-NAICS classification).
+- **Survey:** Encuesta Industrial Anual (EIA), INEGI. ~ 7,000 manufacturing establishments with information on all 86 4-digit NAICS 2007 industries (82 when excluding Oil and missing values)
+- **Administrative data:** Universe of commercial credit loans by banks reports  (R04C), CNBV, aggregated annually to 4-digit NAICS 2007 (using a probabilistic crosswalk to match CNBV-NAICS classification)
 
 ## Measuring labor  wedges ($\theta_t^{L,i}$)
 
