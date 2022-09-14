@@ -101,16 +101,21 @@ Iterative procedure
 
 # Results
 
-## Estimated Capital and Labor distortions
-\centering
-![](fig/TableA1.jpg){width=80%}
+## Descriptive Statistics for the Capital and Labor Distortions
 
+![](fig/1.png)
 
-Notes: The labor wedge is constructed to be unit mean. 
+## Estimated Kernel densities for investment wedges
 
-## Aggregate capital, TFP and average investment wedges.
-\centering
-![](fig/Fig2.jpg){width=80%}
+![](fig/2.png)
+
+## Aggregate capital, TFP and average investment wedges
+
+![](fig/3.png){width=70%}
+
+## Investment wedges and credit conditions
+
+![](fig/4.png)
 
 # Conclusion
 
