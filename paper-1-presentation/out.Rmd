@@ -37,7 +37,7 @@ The two results arise:
 
 - Contribute to the strand of literature on the positive effects of the finance sector to the real economy
 - Setup a production and investment model to measure the wedges for the Mexican manufacturing sector
-- Build upon  the merged dataset of Meza _et al._ (2019), linking output, employment and investment with credit flows and interest rates for Mexican industries between 2003 - 2013
+- Build upon  the merged dataset of Meza _et al._ (2019), linking output, employment and investment with credit flows and interest rates for Mexican industries between 2003 -- 2013
 
 # The environment
 
