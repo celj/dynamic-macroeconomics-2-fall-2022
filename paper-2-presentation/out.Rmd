@@ -49,8 +49,8 @@ The two results arise:
 - A large strand of literature is built upon these. 
 
 # The environment
-Based on Brock-Mirman [1972] growth model with a large number of agents. 
 
+There is a continuum of agents each maximizing an infinite flow of discounted utility
 
 \begin{equation}
 E_0 \left[ \sum_{t=0}^{\inf} \beta^t U (c_t) \right]
@@ -58,40 +58,63 @@ E_0 \left[ \sum_{t=0}^{\inf} \beta^t U (c_t) \right]
 
 subject to 
 $c_t + a_{t+1} = w l_t + (1+r)a_t$;
+
+where $b$ is the limit on borrowing and $l_t$ captures idiosyncratic risk in labor earnings and could be interpreted as unemployment risk. <!-- is assumed to be $i.i.d.$ with bounded support given by $[l_{min},l_{max}]$, with $l_{min}> 0$. -->
+
+We also make the assumptions:
 $c_t \geq 0, a_t \geq -b_t$
 
-where $b$ is the limit on borrowing and $l_t$ is assumed to be $i.i.d.$ with bounded support given by $[l_{min},l_{max}]$, with $l_{min}> 0$.
 
+##  Borrowing limit
 
+A borrowing constraint is necessarily implied by nonnegative consumption. The borrowing limit can be specified as:
+\begin{center}
+$a_t \geq -\phi$, where
 
-##  Model
-
-The borrowing limit can be specified as 
-$a_t \geq -\phi$
-where
 $\phi \equiv min[b, wl_{min}/r]$, for $r>0$; $\phi \equiv b$, for $r \leq 0$
+\end{center}
 
 we define $\hat{a}_t$ and $z_t$ as follows:
+
+\begin{center}
 $\hat{a}_t = a_t + \phi$,
+
 $z_t = wl_t + (1+r)\hat{a}_t - r\phi$
-where $z_t$ may be thought as of the total resources of the agent at date t. 
+\end{center}
+where $z_t$ can be thought as the total resources of the agent. 
 
-Thus, the we rewrite the constraints as: 
+## 
+Thus, the we can rewrite the constraints as: 
 
-
-- $c_t + \hat{a}_{t+1} = z_t$, $c_t \geq 0$, $\hat{a}_t \geq 0$,
-- $z_{t+1} = w l_{t+1} + (1+r) \hat{a}_{t+1} - r \phi$
-
+\begin{align*}
+c_t + \hat{a}_{t+1} &= z_t,  c_t \geq 0, \hat{a}_t \geq 0,\\
+z_{t+1} &= w l_{t+1} + (1+r) \hat{a}_{t+1} - r \phi
+\end{align*}
 
 ## Bellman equation
-Let $V(z_t,b,w,r)$ be the optimal value function for the agent with total resources $z_t$. This is the unique solution to:
+Let $V(z_t,b,w,r)$ be the optimal value function for the agent with total resources $z_t$. 
+
+This is the unique solution to:
 
 \begin{equation*}
 V(z_t,b,w,r) \equiv max \left[ U(z_t - \hat{a}_{t+1}) + \beta \int V((z_{t+1},b,w,r) d F(l_{t+1})\right] 
 \end{equation*}
 
-where the maximization is over $\hat{a}_{t+1}$ subject to the (rewriten) constraints.
+where the maximization is over $\hat{a}_{t+1}$ subject to the (re-written) constraints.
 
+## Solution 
+
+The *optimal asset demand rule* for an agent is obtained by solving the the previous maximization problem.
+
+\begin{center}
+$\hat{a}_{t+1} = A(z_t, b, w, r)$
+\end{center}
+
+we substitute into our re-writen constraints to obtain:
+
+\begin{center}
+$z_{t+1} = w l_{t+1} + (1+r)  A(z_t, b, w, r) - r \phi$
+\end{center}
 
 
 ## Calibration
