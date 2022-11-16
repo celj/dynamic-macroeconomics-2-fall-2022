@@ -17,14 +17,14 @@ output:
 ---
 # Introduction 
 
-## Heterogeneous agent models in continuous time
+## Heterogeneous Agent Models in Continuous Time
 
 
 This paper is part of a literature of *heterogeneous agent models in continuous time*, that studies general equilibrium  with incomplete markets and uninsured idiosyncratic labour income risk. 
 
 
 
-## Research question
+## Research Question
 
 Two main goals
 
@@ -32,7 +32,7 @@ Two main goals
 
 - Use such a model to study the quantitative importance of individual risk for aggregate saving.
 
-## Main takeaways
+## Main Takeaways
 
 The two results arise:
 
@@ -42,13 +42,13 @@ The two results arise:
 - *Variability:* Consumption varies about 50-70 percent as much as income. Saving and assets are much more volatile than income. Saving varies about three times as much as income, and assets vary about twice as much as income.
 
 
-## Main contributions
+## Main Contributions
 
 - This model, jointly with Bewley (1986) and  Huggett (1993), is considered the workhorse of income and wealth distribution in macroeconomics.
 
 - A large strand of literature is built upon these. 
 
-# The environment
+# The Environment
 
 There is a continuum of agents each maximizing an infinite flow of discounted utility
 
@@ -65,7 +65,7 @@ We also make the assumptions:
 $c_t \geq 0, a_t \geq -b_t$
 
 
-##  Borrowing limit
+##  Borrowing Limit
 
 A borrowing constraint is necessarily implied by nonnegative consumption. The borrowing limit can be specified as:
 \begin{center}
@@ -91,7 +91,7 @@ c_t + \hat{a}_{t+1} &= z_t,  c_t \geq 0, \hat{a}_t \geq 0,\\
 z_{t+1} &= w l_{t+1} + (1+r) \hat{a}_{t+1} - r \phi
 \end{align*}
 
-## Bellman equation
+## Bellman Equation
 Let $V(z_t,b,w,r)$ be the optimal value function for the agent with total resources $z_t$. 
 
 This is the unique solution to:
@@ -137,7 +137,7 @@ $\sigma \in [.2, .4]$, $\rho \in [0, .3, .6, .9]$
 - $\sigma$ and $\rho$ are based on Kydland (1984) 
 - $b = 0$, i.e. no borrowing allowed
 
-## Algorithm for approximating the SS
+## Algorithm for Approximating the SS
 
 - Start with some value $r$ close to but less than the rate of time preference.
 - Then compute the asset demand function of total resources by a continuous piece-wise linear function over an interval.
@@ -147,21 +147,33 @@ $\sigma \in [.2, .4]$, $\rho \in [0, .3, .6, .9]$
 - If $r_2$ exceeds the rate of time preference, it is replace by the rate of time preference. 
 - The define $r_3 = (r_1 + r_2) / 2$ and calculate $E_a$ corresponding to $r_3$.
 
+---
 
+\centering
+![](fig/1.png){width=80%}
 
 # Results
 
-## results 1
-<!-- ![](fig/TableA1.jpg){width=80%} -->
+## Aggregate Saving
 
+\centering
+![](fig/2.png){width=100%}
 
+---
 
+### Variabilities
 
-## results 2
-<!-- ![](fig/Fig2.jpg){width=80%} -->
+Consumption variability rises with persistence in earnings and falls with risk aversion. Variability of consumption relative to income behaves similarly.
+
+### Importance of Asset Trading
+
+Consumers are able to accomplish a significant amount of consumption smoothing by accumulating and decumulating assets and, hence, enjoy significant welfare benefits from participating in asset markets.
+
+### Cross-Section Distributions and Inequality Measures
+
+The model does generate empirically plausible relative degrees of inequality. Consumption exhibits the least inequality, followed by net income, gross income, and then capital, and saving exhibits the greatest inequality. However, the model cannot generate the observed degrees of inequality.
 
 ## Conclusion
 
-This class of models can also differ from the infinite-lived agent complete markets model on some important policy issues. e.g. 
-- Chamley (1986) with complete markets, dynamic optimal factor taxation leads to the result that the capital income tax should be zero in the long run, *vs* Aiyagari (1994) shows that with idiosyncratic shocks and incomplete markets the capital income tax is strictly positive even in the long run.  
+This class of models can also differ from the infinite-lived agent complete markets model on some important policy issues such as *Chamley (1986)* where dynamic optimal factor taxation leads to the result that the capital income tax should be zero in the long run, **vs** *Aiyagari (1994)* shows that with idiosyncratic shocks and incomplete markets the capital income tax is strictly positive even in the long run.  
 
