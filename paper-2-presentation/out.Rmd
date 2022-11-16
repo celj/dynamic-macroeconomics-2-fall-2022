@@ -175,5 +175,5 @@ The model does generate empirically plausible relative degrees of inequality. Co
 
 ## Conclusion
 
-This class of models can also differ from the infinite-lived agent complete markets model on some important policy issues such as *Chamley (1986)* where dynamic optimal factor taxation leads to the result that the capital income tax should be zero in the long run, **vs** *Aiyagari (1994)* shows that with idiosyncratic shocks and incomplete markets the capital income tax is strictly positive even in the long run.  
+This class of models can also differ from the infinite-lived agent complete markets model on some important policy issues such as **Chamley (1986)** where dynamic optimal factor taxation leads to the result that the capital income tax should be zero in the long run, **vs Aiyagari (1994)** shows that with idiosyncratic shocks and incomplete markets the capital income tax is strictly positive even in the long run.  
 
