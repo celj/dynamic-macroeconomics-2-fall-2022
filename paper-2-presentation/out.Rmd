@@ -53,7 +53,7 @@ The two results arise:
 There is a continuum of agents each maximizing an infinite flow of discounted utility
 
 \begin{equation}
-E_0 \left[ \sum_{t=0}^{\inf} \beta^t U (c_t) \right]
+E_0 \left[ \sum_{t=0}^{\infty} \beta^t U (c_t) \right]
 \end{equation}
 
 subject to 
@@ -104,7 +104,7 @@ where the maximization is over $\hat{a}_{t+1}$ subject to the (re-written) const
 
 ## Solution 
 
-The *optimal asset demand rule* for an agent is obtained by solving the the previous maximization problem.
+The *optimal asset demand rule* for an agent is obtained by solving the previous maximization problem.
 
 \begin{center}
 $\hat{a}_{t+1} = A(z_t, b, w, r)$
@@ -124,13 +124,15 @@ Specification and parameterization consistent with postwar US economy.
 - Period 1 year, $\beta = 0.96$
 - Production function $f(\cdot)$ is Cobb-Douglas, with $\alpha = 0.36$, 
 - Depreciation rate $\delta = 0.08$
-- Utility function $U(c) = [c^{1-\mu}-1] / (1-\mu)$, where $\mu \in [1, 3, 5]$
+- CRRA Utility function $U(c) = [c^{1-\mu}-1] / (1-\mu)$, where $\mu \in [1, 3, 5]$
 
-- Labor endowment shocks: Markov chain with seven states to math AR for the log of labor endowment shock:
+- Labor endowment shocks: Markov chain with seven states to match AR for the log of labor endowment shock:
 
+\begin{center}
 $log(l_t) = \rho log (l_{t_1}) + \sigma (1-\rho^2)^{1/2}\epsilon$, $\epsilon_t \sim N(0,1)$
 
-$\sigma \in [0.2, 0.4]$, $\rho \in [0, .3, .6, .9]$
+$\sigma \in [.2, .4]$, $\rho \in [0, .3, .6, .9]$
+\end{center}
 
 - $\sigma$ and $\rho$ are based on Kydland (1984) 
 - $b = 0$, i.e. no borrowing allowed
@@ -161,5 +163,5 @@ $\sigma \in [0.2, 0.4]$, $\rho \in [0, .3, .6, .9]$
 ## Conclusion
 
 This class of models can also differ from the infinite-lived agent complete markets model on some important policy issues. e.g. 
-- Chamley (1986) with complete markets, dynamic optimal factor taxation leads to the result that the capital income tax should be zero in the long run, *vs* Aiyagari (1994) shows that with idiosyncratic shocks and incomplete markets the capital income tax is strictly positive even in the long run. 
+- Chamley (1986) with complete markets, dynamic optimal factor taxation leads to the result that the capital income tax should be zero in the long run, *vs* Aiyagari (1994) shows that with idiosyncratic shocks and incomplete markets the capital income tax is strictly positive even in the long run.  
 
