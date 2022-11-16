@@ -128,7 +128,7 @@ Specification and parameterization consistent with postwar US economy.
 - Labor endowment shocks: Markov chain with seven states to match AR for the log of labor endowment shock:
 
 \begin{center}
-$log(l_t) = \rho log (l_{t_1}) + \sigma (1-\rho^2)^{1/2}\epsilon$, $\epsilon_t \sim N(0,1)$
+$log(l_t) = \rho log (l_{t-1}) + \sigma (1-\rho^2)^{1/2}\epsilon$, $\epsilon_t \sim N(0,1)$
 
 $\sigma \in [.2, .4]$, $\rho \in [0, .3, .6, .9]$
 \end{center}
