@@ -22,7 +22,9 @@ output:
 
 This paper is part of a literature of *heterogeneous agent models in continuous time*, that studies general equilibrium  with incomplete markets and uninsured idiosyncratic labour income risk. 
 
-
+\begin{center}
+market incompleteness + borrowing constrained in future periods, $\rightarrow$ agents accumulate excess capital, to smooth consumption in the face of uncertain individual labor incomes.
+\end{center}
 
 ## Research Question
 
@@ -36,17 +38,14 @@ Two main goals
 
 The two results arise:
 
-
-- *Aggregate saving:* Differences between the saving rates with and without insurance are quite small for moderate and empirically plausible values of $\sigma, \rho, \mu$. 
-
-- *Variability:* Consumption varies about 50-70 percent as much as income. Saving and assets are much more volatile than income. Saving varies about three times as much as income, and assets vary about twice as much as income.
+- **Aggregate saving:** Differences between the saving rates with and without insurance are quite small for moderate and empirically plausible values of $\sigma, \rho, \mu$. 
+- **Variability:** Consumption varies about 50-70 percent as much as income. Saving and assets are much more volatile than income. Saving varies about three times as much as income, and assets vary about twice as much as income.
 
 
 ## Main Contributions
 
-- This model, jointly with Bewley (1986) and  Huggett (1993), is considered the workhorse of income and wealth distribution in macroeconomics.
-
-- A large strand of literature is built upon these. 
+- This model, jointly with Huggett (1993, 1997), is considered the workhorse of income and wealth distribution in macroeconomics.
+- A large strand of literature is built upon these.
 
 # The Environment
 
