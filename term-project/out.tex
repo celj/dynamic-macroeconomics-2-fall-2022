@@ -1,0 +1,267 @@
+% see http://info.semprag.org/basics for a full description of this template
+\documentclass[cm,linguex]{glossa}
+
+% possible options:
+% [times] for Times font (default if no option is chosen)
+% [cm] for Computer Modern font
+% [lucida] for Lucida font (not freely available)
+% [brill] open type font, freely downloadable for non-commercial use from http://www.brill.com/about/brill-fonts; requires xetex
+% [charis] for CharisSIL font, freely downloadable from http://software.sil.org/charis/
+% for the Brill an CharisSIL fonts, you have to use the XeLatex typesetting engine (not pdfLatex)
+% for headings, tables, captions, etc., Fira Sans is used: https://www.fontsquirrel.com/fonts/fira-sans
+% [biblatex] for using biblatex (the default is natbib, do not load the natbib package in this file, it is loaded automatically via the document class glossa.cls)
+% [linguex] loads the linguex example package
+% !! a note on the use of linguex: in glossed examples, the third line of the example (the translation) needs to be prefixed with \glt. This is to allow a first line with the name of the language and the source of the example. See example (2) in the text for an illustration.
+% !! a note on the use of bibtex: for PhD dissertations to typeset correctly in the references list, the Address field needs to contain the city (for US cities in the format "Santa Cruz, CA")
+
+%\addbibresource{sample.bib}
+% the above line is for use with biblatex
+% replace this by the name of your bib-file (extension .bib is required)
+% comment out if you use natbib/bibtex
+
+\let\B\relax %to resolve a conflict in the definition of these commands between xyling and xunicode (the latter called by fontspec, called by charis)
+\let\T\relax
+\usepackage{xyling} %for trees; the use of xyling with the CharisSIL font produces poor results in the branches. This problem does not arise with the packages qtree or forest.
+\usepackage[linguistics]{forest} %for nice trees!
+\usepackage{longtable}
+
+\title[Empirical Industrial Organization]{Solving and Estimating\\
+an Incomplete Information Entry Game}
+% Optional short title inside square brackets, for the running headers.
+
+% \author[Paul \& Vanden Wyngaerd]% short form of the author names for the running header. If no short author is given, no authors print in the headers.
+% {%as many authors as you like, each separated by \AND.
+%   \spauthor{Waltraud Paul\\
+%   \institute{CNRS, CRLAO}\\
+%   \small{105, Bd. Raspail, 75005 Paris\\
+%   waltraud.paul@ehess.fr}
+%   }
+%   \AND
+%   \spauthor{Guido Vanden Wyngaerd \\
+%   \institute{KU Leuven}\\
+%   \small{Warmoesberg 26, 1000 Brussel\\
+%   guido.vandenwyngaerd@kuleuven.be}
+%   }%
+% }
+
+\author[Lezama]{
+    \spauthor{Carlos Enrique Lezama Jacinto\\
+  \institute{\hfill\break
+Instituto Tecnológico\\
+Autónomo de México}\\
+  \small{\hfill\break
+clezamaj@itam.mx}
+  }%
+  }
+
+\usepackage{natbib}
+
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% From pandoc table feature
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+
+
+
+
+\usepackage{multirow, array}
+\setlength{\parskip}{\baselineskip}
+\newcommand{\ev}{\text{E}}
+\newcommand{\iid}{\text{i.i.d.}}
+\newcommand{\dnorm}{\mathcal{N}}
+\newcommand{\dunif}{\mathcal{U}}
+
+\begin{document}
+
+
+\sffamily
+\maketitle
+
+
+
+\rmfamily
+
+%  Body of the article
+\hypertarget{setup}{%
+\section{Setup}\label{setup}}
+
+Suppose there are two firms, \(A\) and \(B\), that simultaneously decide
+whether to enter in the market \(m \in \{1, \dots, M\}\) or not. If firm
+\(i \in \{A, B\}\) decides to enter, its profits are given by
+
+\[
+\Pi_{i, m} = X_{i, m} \beta - D_{j, m} \alpha + \nu_m + u_{i, m}, \quad \forall\ i, j \in \{A, B\},\ i \neq j
+\]
+
+where \(X_{i, m}\) is an observable characteristic of firm \(i\) that
+boosts profits in market \(m\), \(D_{j, m} \in \{0, 1\}\) is \(j\)'s
+decision of entering the market, \(\nu_m\) is a market fixed effect, and
+\(u_{i, m}\) captures unobserved idiosyncratic shocks to profits.
+
+On the other hand, if firm \(i\) decides not to enter market \(m\), its
+profits are zero.
+
+Notice that \(u_{i, m}\) is observed by \(i\) but not by its opponent
+\(j\). Consequently, the firms are playing an incomplete information
+entry game described below.
+
+\begin{center}
+\begin{tabular}{cc|c|c|}
+    & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Firm $B$}\\
+                            & \multicolumn{1}{c}{} & \multicolumn{1}{c}{Enter}                             & \multicolumn{1}{c}{Do not enter}                      \\\cline{3-4}
+    \multirow{2}*{Firm $A$} & Enter                & $\left(\Pi_{A ,m}, \Pi_{B, m}\right)$                 & $\left( X_{A, m} \beta + \nu_m + u_{A, m}, 0 \right)$ \\\cline{3-4}
+                            & Do not enter         & $\left( 0, X_{B, m} \beta + \nu_m + u_{B, m} \right)$ & $\left(0, 0\right)$                                   \\\cline{3-4}
+\end{tabular}
+\end{center}
+
+Thus, the expected profits of firm \(A\) if it decides to enter market
+\(m\) are
+
+\begin{align*}
+    \ev\left(\Pi_{A, m}\right) & = \left( D_{A, m} \right) \left( p(D_{B, m} = 1) \left( X_{A, m} \beta - \alpha + \nu_m + u_{A, m} \right) \right. \\ &+ \left. \left( 1 - p(D_{B, m} = 1)\right) \left( X_{A, m} \beta - \alpha + u_{A, m} \right) \right) \\
+    &+ \left( 1 - D_{A, m} \right) \cdot 0
+\end{align*}
+
+where, \(\forall\ i, j \in \{A, B\}\), \(i \neq j\), the condition for
+firm \(i\) to enter the market in terms of its expected profits is
+defined as follows:
+
+\begin{align*}
+    D_{i, m} & = \mathbf{1} \left( p(D_{j, m} = 1) \left( X_{i, m} \beta - \alpha + \nu_m + u_{i, m} \right) \right. \\ &+ \left. \left( 1 - p(D_{j, m} = 1) \right) \left( X_{i, m} \beta + \nu_m + u_{i, m} \right) > 0 \right) .
+\end{align*}
+
+Namely, the probability that firm \(A\) enters market \(m\) is
+
+\begin{align*}
+    p \left(D_{A, m} = 1\right) & = p \left( X_{A, m} \beta - \alpha p \left( D_{B, m} = 1 \right) + \nu_m + u_{A, m} > 0 \right)              \\
+                                    & = p \left( u_{A, m} > - \left( X_{A, m} \beta - \alpha p \left( D_{B, m} = 1 \right) + \nu_m \right) \right) \\
+                                    & = \Phi \left( X_{A, m} \beta - \alpha p \left( D_{B, m} = 1 \right) + \nu_m \right)                              
+\end{align*}
+
+where \(\Phi = \dnorm (0, 1)\). Recall that we assume
+\(u_{i, m} \sim \dnorm(0, 1)\), \(\forall\ i, j \in \{A, B\}\),
+\(i \neq j\).
+
+Similarly,
+
+\[
+p \left( D_{B, m} = 1 \right) = \Phi \left( X_{B, m} \beta - \alpha p \left( D_{A, m} = 1 \right) + \nu_m \right) .
+\]
+
+Henceforth, let \(p_{i, m} = p(D_{i, m} = 1)\).
+
+\newpage
+
+\hypertarget{simulations}{%
+\section{Simulations}\label{simulations}}
+
+We propose the following parametrization to simulate our model:
+
+\begin{align*}
+&\alpha =  2 && X_{A,m} \sim \dunif(0, 1) \\
+&\beta = 0.2 && X_{B, m} \sim \dunif(0.1, 1.4) \\
+&\nu_m = 0.9 \times \mathbf{1} \{ m \leq 100 \} && u_{A, m}, u_{B, m} \overset{\iid}{\sim} \dnorm(0, 1)
+\end{align*}
+
+With this setup, we obtain the following entry probabilities for markets
+1, 101, 201, 301, and 401.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule()
+\(m\) & \(p_{A, m}\) & \(p_{B, m}\) \\
+\midrule()
+\endhead
+1 & 0.6019 & 0.4001 \\
+101 & 0.3172 & 0.2766 \\
+201 & 0.3375 & 0.2805 \\
+301 & 0.3812 & 0.2503 \\
+401 & 0.2590 & 0.3362 \\
+\bottomrule()
+\end{longtable}
+
+Thus, firm \(A\) enters 165 markets while firm \(B\) enters 179.
+However, recall that Bayesian Nash equilibrium allows for ex-post regret
+where profits are negative succeeding the decision of entry. In our
+case, firm \(A\) regrets 41 times while \(B\) regrets 48---24.85\% and
+26.82\%, respectively.
+
+\newpage
+
+\hypertarget{maximum-likelihood}{%
+\section{Maximum Likelihood}\label{maximum-likelihood}}
+
+In pursuit of our estimation objectives for
+\(\theta = (\alpha, \beta, \gamma)\) such that \(\gamma\) appears in
+\(\nu_m := \gamma \times \mathbf{1} \{ m \leq 100 \}\)---i.e., we also
+want to estimate a common market fixed effect for the first 100
+markets---we define our log-likelihood function as shown below.
+
+\begin{align*}
+\log\mathcal{L}_{m} (\theta \mid \cdot) &= \sum_{m = 1}^{M} \left[ D_{A, m} D_{B, m} \log(p_{A, m} p_{B, m}) \right. \\
+&+ D_{A, m} (1 - D_{B, m}) \log(p_{A, m} (1 - p_{B, m})) \\
+&+ (1 - D_{A, m}) D_{B, m} \log((1 - p_{A, m}) p_{B, m}) \\
+&+ \left. (1 - D_{A, m}) (1 - D_{B, m}) \log((1 - p_{A, m}) (1 - p_{B, m})) \right]
+\end{align*}
+
+The maximum likelihood estimates, as well as their standard errors, are
+shown in the following table.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule()
+Parameter & Estimate & SE \\
+\midrule()
+\endhead
+\(\alpha\) & 2.0347 & 0.1813 \\
+\(\beta\) & 0.1915 & 0.0470 \\
+\(\gamma\) & 0.7421 & 0.1865 \\
+\bottomrule()
+\end{longtable}
+
+\newpage
+
+\hypertarget{gmm}{%
+\section{GMM}\label{gmm}}
+
+With the generalized method of moments (GMM), we may want to consider up
+to the fourth moment to ensure over-identification. This way, we can
+describe an algorithm that performs GMM estimation as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compute
+  \(\theta^{(0)} = \arg\min_\theta \bar{g}(\theta)'\bar{g}(\theta)\)
+\item
+  Compute the heteroskedasticity and auto-correlation consistent matrix
+  \(\hat{\Omega} \left(\theta^{(0)}\right)\) like the one proposed by
+  \citet{HAC}
+\item
+  Compute
+  \(\theta^{(0)} = \arg\min_\theta \bar{g}(\theta)'\left[\hat{\Omega} \left(\theta^{(0)}\right)\right]^{-1}\bar{g}(\theta)\)
+\item
+  If
+  \(\left\lVert \theta^{(0)} - \theta^{(1)} \right\rVert < \varepsilon\),
+  stop; else, \(\theta^{(0)} = \theta^{(1)}\) and repeat from 2
+\item
+  Define \(\hat{\theta} = \theta^{(1)}\)
+\end{enumerate}
+
+\newpage
+
+\bibliography{ref.bib}
+
+
+\end{document}
