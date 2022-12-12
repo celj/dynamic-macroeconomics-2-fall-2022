@@ -44,33 +44,33 @@ I_bar = Y_bar - C_bar;
 rho = (alpha / R_bar) * (Y_bar / K_bar);
 eta = 1 / (C_bar - ((tau / nu) * (N_bar ^ nu)));
 theta = eta * tau * (N_bar ^ nu);
-phi = (((nu * C_bar) - (tau * N_bar * nu)) ^ 2 * (1 - alpha)) / (nu ^ 2 * tau * C_bar * (N_bar ^ nu));
+phi = (((nu * C_bar) - (tau * N_bar * nu)) ^ 2 * (1 - alpha)) / (nu ^ 3 * tau * C_bar * (N_bar ^ nu));
 
 % -------------------------------------------------------------------------
 % Matrices
 
-VARNAMES = ['capital    '
-            'consumption'
-            'output     '
-            'labor      '
-            'investment '
-            'technology '];
+VARNAMES = ['Capital    '
+            'Consumption'
+            'Output     '
+            'Labor      '
+            'Investment '
+            'Technology '];
 
 % k(t):
 AA = [0
+      -K_bar
       0
-      alpha
       0];
 
 % k(t-1):
 BB = [0
-      0
-      0
+      (1 - delta) * K_bar
+      alpha
       0];
 
 % c(t) y(t) n(t) i(t)
 CC = [-C_bar, Y_bar, 0, -I_bar % eq. 1
-      C_bar / Y_bar, -1, 0, I_bar / Y_bar % eq. 2
+      0, 0, 0, I_bar % eq. 2
       0, -1, 1 - alpha, 0 % eq. 3
       (1 / nu) - (phi * eta * L_bar * C_bar), phi * L_bar, phi * theta * L_bar, 0]; % eq. 4
 
@@ -81,10 +81,10 @@ DD = [0
       0];
 
 % k(t+1)
-FF = [-rho];
+FF = [0];
 
 % k(t)
-GG = [0];
+GG = [-rho];
 
 % k(t-1)
 HH = [0];
@@ -107,6 +107,7 @@ NN = [psi];
 % AR variance
 Sigma = [sigma_eps ^ 2];
 
+% -------------------------------------------------------------------------
 % Options
 
 l_equ = size(AA, 1);
@@ -116,35 +117,49 @@ k_exog = size(DD, 2);
 
 % -------------------------------------------------------------------------
 % Calculations
+
 warnings = [];
 options;
 solve;
 sol_out;
-do_it;
+%do_it;
 
 % -------------------------------------------------------------------------
-% P
+% Impulse responses
 
-% -------------------------------------------------------------------------
-% P
+T = 150 + 1;
+Tend = 33;
 
-% -------------------------------------------------------------------------
-% P
+time_count = 0;
 
-% -------------------------------------------------------------------------
-% P
+for shock_counter = SELECT_SHOCKS % 1 : k_exog,
+    response = zeros(m_states + n_endog + k_exog, HORIZON);
+    response(m_states + n_endog + shock_counter, 1) = 1;
+    left = [PP, zeros(m_states, n_endog), zeros(m_states, k_exog)
+            RR, zeros(n_endog, n_endog), zeros(n_endog, k_exog)
+            zeros(k_exog, (m_states + n_endog)), NN];
+    right = eye(m_states + n_endog + k_exog) + ...
+        [zeros(m_states, (m_states + n_endog)), QQ
+     zeros(n_endog, (m_states + n_endog)), SS
+     zeros(k_exog, (m_states + n_endog)), zeros(k_exog, k_exog)];
+    response(:, 1) = right * response(:, 1);
 
-% -------------------------------------------------------------------------
-% P
+    for time_counter = 2:T
+        response(:, time_counter) = right * left * response(:, time_counter - 1);
+    end
 
-% -------------------------------------------------------------------------
-% P
+end
 
-% -------------------------------------------------------------------------
-% P
+response = [zeros(6, 1) response];
 
-% -------------------------------------------------------------------------
-% P
+figure(1)
 
-% -------------------------------------------------------------------------
-% P
+for i = 1:6
+    subplot(3, 2, i)
+    plot(-1:T - 1, response(i, :))
+    title(VARNAMES(i, :))
+    xlim([-1 Tend])
+end
+
+% y(t) first 5 responses ahead
+response(3, 1:6)
