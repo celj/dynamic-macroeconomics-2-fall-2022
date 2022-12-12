@@ -120,9 +120,10 @@ Sigma = [sigma_eps ^ 2];
 
 % Setting the options:
 
-[l_equ, m_states] = size(AA);
-[l_equ, n_endog] = size(CC);
-[l_equ, k_exog] = size(DD);
+l_equ = size(AA, 1);
+m_states = size(AA, 2);
+n_endog = size(CC, 2);
+k_exog = size(DD, 2);
 
 % The following lines were modified by Felipe Meza
 % This code simply reports the matrices of the solution PP, QQ, RR, SS
@@ -144,3 +145,4 @@ warnings = [];
 options;
 solve;
 sol_out;
+%do_it;
