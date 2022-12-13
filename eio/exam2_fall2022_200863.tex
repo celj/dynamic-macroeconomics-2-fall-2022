@@ -1,0 +1,159 @@
+\documentclass[english,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage[dvips]{graphicx}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{natbib}
+\usepackage{delarray}
+\usepackage{dcolumn}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{psfrag}
+\usepackage{multirow,hhline}
+\usepackage{amstext}
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage{rotating}
+\usepackage{textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{pdflscape}
+\usepackage{multirow}
+\usepackage{bbding}
+\usepackage{bbm}
+
+
+\newcommand\doubleRule{\midrule\midrule}
+\newcommand{\indep}{\perp \!\!\! \perp}
+\newcommand{\notindep}{\not\indep}
+
+\newcommand{\pr}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\re}[1]{\smallskip\textsc{Respuesta} \begin{it}\\ #1 \end{it} \bigskip}
+\textwidth=480pt \textheight=610pt
+\oddsidemargin=0in\topmargin=-.2in
+\def\max{mathop{\mbox{\normalfont m\'ax}}\limits}
+\def\min{mathop{\mbox{\normalfont m\'{i}n}}\limits}
+
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+
+\usepackage{multirow,hhline}
+
+
+
+\begin{document}
+
+
+
+\title{\sc Empirical Industrial Organization\\Fall 2022 - Take Home Exam 2}
+\author{Instructor: Cristi\'an S\'anchez. \\ Student: Jes\'us L\'opez P\'erez 200863}
+\date{Due date: December 13, 2022}
+
+\maketitle
+
+
+\bigskip
+\bigskip
+
+
+%%%%%%%%%%%%%
+\noindent In this exam we investigate a static continuous game with complete information in the supply side. We consider two scenarios: one where the firms have constant marginal costs, and another one where firms have increasing marginal costs. We study the solution and estimation of this game.
+
+
+\section{Constant Marginal Costs} 
+Suppose that we have already estimated a demand model, thus we have estimates for the demand function of the firm, $q_j(p)$. Suppose, too, that the profit function of the firm is,
+\[ \Pi_j(p) = p_jq_j(p) - c_j\left(q_j(p)\right) , \]
+where $c_j\left(q_j(p)\right) = c_0 + c_1q_j(p) + Z_j\gamma + \nu_j$, in which $c_0$, $c_1$, and $\gamma$ are unknown (to the econometrician) parameters to be estimated, $Z_j$ is a vector of cost shifters, and $\nu_j$ is a mean zero unobserved (to the econometrician) determinant of costs.
+\begin{enumerate}
+	\item Explicitly write down the expression for the marginal cost, 
+	$c_j^\prime(q_j)$. \\
+	\textit{R = }
+	\[
+mc = 	c_j^\prime (q_j) = \frac{\partial c_j\left(q_j(p)\right)}{ \partial p_j} = c_1 
+	\]
+	
+	\item Using your expression for $c_j^\prime(q_j)$, write down the first order condition for firm $j$ that chooses $p_j$ to maximize profits.\\
+\textit{R =} \\
+Firms set each of their prices to maximize 
+
+\begin{align*}
+\sum_{j \in J} p_j q_j -c_j\left(q_j(p)\right) &= p_j q_j - c_0 - c_1q_j(p) - Z_j\gamma - \nu_j \\
+& =  \sum_{j \in J} \left( p_j - c_1 \right) q_j(p) - c_0 -Z_j \gamma - \nu_j\\
+& = \sum_{j \in J} \left( p_j - c_1 \right) M s_j - c_0 -Z_j \gamma - \nu_j
+\end{align*}
+
+where $M$ is the total market and $s_j$ is the firm share. Thus implies that for $j = 1, \cdots ,J$ 
+\begin{align*}
+s_j + \sum_{k \in J_f} (p_k - mc_k) M \frac{\partial s_k}{\partial p_j} &= 0 \\
+s_j + \sum_{k \in J_f} (p_k - c_1) M \frac{\partial s_k}{\partial p_j} &= 0 \\
+\end{align*}
+	
+	\item Using the estimated demand function, $\hat q_j(p)$, the expression for the firm's first order condition, and assuming no endogeneity concerns, how would you estimate the cost function parameters, $c_0$, $c_1$, and $\gamma$?\\
+\textit{R = }\\
+Note that we can rewrite the FOC in matrix form
+
+\[
+\Omega(p)(p-mc) + s(p) = 0
+\]
+
+Where $\Omega(p)$ is the matrix of $\frac{\partial s_k}{\partial p_j} $ effects, where values are nonzero for elements of a row that are owned by the same firm as the row good. We solve for $mc = p - \Omega^{-1}(p) s(p)$
+
+Then, we follow the next steps
+\begin{enumerate}
+\item Estimate the random coefficients model (RC).
+\item Calculate $\Omega(p)$ at observed prices and estimated coefficients.
+\item Back out $mc$
+\[
+\hat{mc} = p - \Omega^{-1}(p, \hat{\theta}) s
+\]
+\end{enumerate}	
+	
+	\item Notice that you would need to adjust your standard errors, because you are using an estimate of $q_j(p)$, which induces measurement error in your estimation. How would you adjust your standard errors in this context? \\
+	
+\textit{R=} I might use the delta method or a bootstrap to calculate standard errors. Note that bootstrap is preferred to avoid inverse matrix calculations.
+	
+	\item Now, suppose that you have your supply side estimates at hand, i.e. $\hat c_0$, $\hat c_1$, $\hat\gamma$. Suppose, too, that there are only two firms in the market, $j=1,2$, and that you want to simulate new equilibrium prices, $p^*$, that correspond to new values of the vector of cost shifters, $Z^\prime$. Write down the system of (two) equations that you would need to solve to obtain the new equilibrium prices. \\
+\textit{R = }
+\[
+p^* = \hat{mc} + \Omega^{post,-1} (p^*, \hat{\theta}) s(p^*, \hat{\theta})
+\]	
+	
+\end{enumerate}
+
+
+
+\section{Increasing Marginal Costs}
+Now, suppose that the cost function is quadratic, and of the form
+\[ c_j\left(q_j(p)\right) = c_0 + c_1q_j(p) + c_2q_j(p)^2 + Z_j\gamma + \nu_j , \]
+where $c_0$, $c_1$, $c_2$, and $\gamma$ are unknown (to the econometrician) parameters to be estimated.
+\begin{enumerate}
+	\item Explicitly write down the expression for the marginal cost, $c_j^\prime(q_j)$.\\
+\textit{R = }\\
+	\[
+mc = 	c_j^\prime (q_j) = \frac{\partial c_j\left(q_j(p)\right)}{ \partial p_j} = c_1+ 2 c_2 q_j(p)
+	\]
+	
+	\item Using your expression for $c_j^\prime(q_j)$, write down the first order condition for firm $j$ that chooses $p_j$ to maximize profits.\\
+\textit{R = }	\\
+Thus implies that for $j = 1, \cdots ,J$ 
+\begin{align*}
+	s_j + \sum_{k \in J_f} (p_k - mc_k) M \frac{\partial s_k}{\partial p_j} = 0 \\
+	s_j + \sum_{k \in J_f} (p_k - c_1+ 2 c_2 q_j(p)) M \frac{\partial s_k}{\partial p_j} = 0
+\end{align*}
+
+	
+	\item Using the estimated demand function, $\hat q_j(p)$, the expression for the firm's first order condition, and assuming no endogeneity concerns, how would you estimate the cost function parameters, $c_0$, $c_1$, and $\gamma$?
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document} 
